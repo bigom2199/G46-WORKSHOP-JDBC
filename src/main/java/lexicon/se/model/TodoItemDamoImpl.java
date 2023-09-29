@@ -5,6 +5,11 @@ import lexicon.se.model.db.MySQLConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class TodoItemDamoImpl implements TodoItems {
     @Override
@@ -38,5 +43,59 @@ public class TodoItemDamoImpl implements TodoItems {
      }catch (SQLException e){
         e.printStackTrace();
     }
-        return item;
+     return item;
+
+        @Override
+public  Collection<Todo_Item> findAll() {
+        List<Todo_Item> item = new ArrayList<Todo_Item>();
+        String query = "SELECT * FROM todo_item";
+
+        try (Collection collection = Collections.singleton(MySQLConnection.getConnection())
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("query");
+    }
+        while (resuitSet.next())
+
+    {
+        int todoId = resultSet.getInt(1);
+        String title = resultSet.getString(2);
+        String description = resultSet.getString(3);
+        LocalDate deadline = resultSet.getDate(4).toLocalDate();
+
+        boolean done = resultSet.getBoolean(5);
+        int assignedId = resultSet.getInt(6);
+        Todo_Item item = new Todo_Item(todoId, title, description, deadline, done);
+
+
+        item.add(item);
+    }catch (SQLException e){
+            e.printStackTrace();
+    }
+    return item;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
