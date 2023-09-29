@@ -10,10 +10,10 @@ public class MySQLConnection {
      public static  connection getConnection(){
          Connrction connection = null;
          try{
-             DriverManager.getConnection(JDBC_URL, JDBC_PWD);
+             connection = DriverManager.getConnection(JDBC_URL, JDBC_PWD);
 
          } catch (SQLException e){
-
+           e.printStackTrace();
          }
 
          return connection;
